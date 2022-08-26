@@ -6,7 +6,7 @@ outputs:
 
 images:
   my_image:
-    ref: image:test_img:${{ hash_files(flow.action_path / "src/**/*.py") }}
+    ref: image:test_img:${{ hash_files_relative(flow.action_path, "src/**/*.py") }}
     context: ${{ flow.action_path / "src" }}
     dockerfile: ${{ flow.action_path / "src/Dockerfile"}}
 
