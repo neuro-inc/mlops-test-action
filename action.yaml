@@ -1,9 +1,5 @@
 kind: batch
 
-inputs:
-  action_path:
-    default: qwe
-
 outputs:
   my_output:
     value: ${{ needs.task1.outputs.my_output }}
