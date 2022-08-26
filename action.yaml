@@ -1,0 +1,24 @@
+kind: batch
+
+inputs:
+  action_path:
+    default: qwe
+
+outputs:
+  my_output:
+    value: ${{ needs.task1.outputs.my_output }}
+
+images:
+  my_image:
+    ref: image:test_img:${{ hash_files(flow.action_path / "src/**/*.py") }}
+    context: ${{ flow.action_path / "src" }}
+    dockerfile: ${{ flow.action_path / "src/Dockerfile"}}
+
+tasks:
+  - id: task1
+    image: ${{ images.my_image.ref }}
+    bash: |
+      ls
+      python /root/some-script.py
+      echo ${{ flow.action_path }}
+      echo "::set-output name=my_output::qwerty"
