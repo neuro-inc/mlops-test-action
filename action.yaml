@@ -9,6 +9,14 @@ images:
     ref: image:test_img:${{ hash_files_relative(flow.action_path, "src/**/*.py") }}
     context: ${{ flow.action_path / "src" }}
     dockerfile: ${{ flow.action_path / "src/Dockerfile"}}
+    env:
+      ENVONE: qwe
+      QWESA: asd
+      ENVTWO: rty
+    volumes:
+      storage::/storage
+    build_preset:
+      cpu-small
 
 tasks:
   - id: task1
