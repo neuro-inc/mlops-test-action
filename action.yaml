@@ -14,7 +14,8 @@ images:
       QWESA: asd
       ENVTWO: rty
     volumes:
-      storage::/storage
+    - storage::/storage
+    - storage:/path:/path
     build_preset:
       cpu-small
 
